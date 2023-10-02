@@ -101,8 +101,3 @@ def print_pretty_table(df, title):
         print(title, file=f)
         print(table, file=f)
     return table
-    
-individuals, families = get_gedcom_df('example.ged')
-
-print(individuals)
-print(families)

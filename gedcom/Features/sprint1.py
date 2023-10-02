@@ -1,8 +1,13 @@
 from gedcom.gedcom_parse import get_gedcom_df
 import pandas as pd
-from utils import compare_dates
+from gedcom.Features.utils import compare_dates
 
-individuals, families = get_gedcom_df('example.ged')
+
+import os
+ 
+# get current directory
+cwd = os.getcwd()
+individuals, families = get_gedcom_df(f'{cwd}/gedcom/example.ged')
 
 
 # US01: Dates before current date
@@ -15,38 +20,71 @@ individuals, families = get_gedcom_df('example.ged')
 # US04: Marriage before divorce
 
 # US05: Marriage before death
+
 def check_marriage_before_death(individuals, family):
     
-    def get_death(df, spouse):
-        return df[df['ID'] == df[spouse]]['DEAT'].values[0]
+    def get_death(df, id):
+        val = (df[df['ID'] == id]['DEAT']).values
+        if len(val) == 0:
+            return ""
+        return str(val[0])
     
-    def getErrors(row, key):
+    def getErrors(row, key, death):
         spouse = "husband" if key=="HUSB" else "wife"
-        if compare_dates(husband_death, row['MARR']) == 1:
-            errMsg = (f"ERROR: FAMILY: US05: {row['ID']} Married {row['MARR']} after {spouse}'s ( {row[key]} death on {get_death(individuals, key)}")
+        errMsg = ""
+
+        if compare_dates(death, row['MARR']) == -1:
+            errMsg = (f"ERROR: FAMILY: US05: {row['ID']}: Married on {row['MARR']} after {spouse}'s ({row[key]}) death on {death}")
+        
         return errMsg
     
     allErrors=[]
     
     for _, row in family.iterrows():
-        if row['MARR'] != pd.NA:
-            husband_death = get_death(individuals, 'HUSB')
-            wife_death = get_death(individuals, 'WIFE')
-            if husband_death != pd.NA:
-                allErrors.append(getErrors(row, key = 'HUSB'))
-            if wife_death != pd.NA:
-                allErrors.append(getErrors(row, key = 'WIFE'))
+        if not pd.isna(row['MARR']) and row['MARR'] != 'NA':
+            husband_death = get_death(individuals, row['HUSB'])
+            wife_death = get_death(individuals, row['WIFE'])
+            if len(husband_death)>0 and husband_death != '<NA>':
+                husband_errors = getErrors(row, key = 'HUSB', death = husband_death)
+                if husband_errors: allErrors.append(husband_errors)
+            if len(wife_death) and wife_death != '<NA>':
+                wife_errors = getErrors(row, key = 'WIFE', death=wife_death)
+                if wife_errors: allErrors.append(wife_errors)
+
     return allErrors
 
-# write 5 unit test cases for US05
-print(check_marriage_before_death(individuals, families))
-
-# 1. husband dead before marriage
-
-
 # US06: Divorce before death
+def check_divorce_before_death(individuals, family):
+    
+    def get_death(df, id):
+        val = (df[df['ID'] == id]['DEAT']).values
+        if len(val) == 0:
+            return ""
+        return str(val[0])
+    
+    def getErrors(row, key, death):
+        spouse = "husband" if key=="HUSB" else "wife"
+        errMsg = ""
 
-# step 1: loop through each person's id
-# step 2: get their col1 (e.g. birth)
-# step 3: go to df 2 and look at person's col2 (e.g. marriage) using id from df1
-# step 4: compare the two dates. 
+        if compare_dates(death, row['DIV']) == -1:
+            errMsg = (f"ERROR: FAMILY: US05: {row['ID']}: Divorced on {row['DIV']} after {spouse}'s ({row[key]}) death on {death}")
+        
+        return errMsg
+    
+    allErrors=[]
+    
+    for _, row in family.iterrows():
+        if not pd.isna(row['DIV']) and row['DIV'] != 'NA':
+            husband_death = get_death(individuals, row['HUSB'])
+            wife_death = get_death(individuals, row['WIFE'])
+            if len(husband_death)>0 and husband_death != '<NA>':
+                husband_errors = getErrors(row, key = 'HUSB', death = husband_death)
+                if husband_errors: allErrors.append(husband_errors)
+            if len(wife_death) and wife_death != '<NA>':
+                wife_errors = getErrors(row, key = 'WIFE', death=wife_death)
+                if wife_errors: allErrors.append(wife_errors)
+
+    return allErrors
+
+print(check_marriage_before_death(individuals, families))
+print(check_divorce_before_death(individuals, families))
