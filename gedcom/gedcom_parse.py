@@ -92,12 +92,12 @@ def get_gedcom_df(filename):
 
         return individuals, families
 
-def print_pretty_table(df, title):
+def print_pretty_table(df, title,destination):
     table = PrettyTable()
     table.field_names = df.columns.to_list()
     for index, row in df.iterrows():
         table.add_row(row.to_list())
-    with open('output.txt', 'a') as f:
+    with open(destination, 'a') as f:
         print(title, file=f)
         print(table, file=f)
     return table

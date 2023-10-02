@@ -77,5 +77,3 @@ class TestMarriageBeforeDeath(unittest.TestCase):
     
 if __name__ == '__main__':
     unittest.main()
-
-# US06: Divorce before death Tests

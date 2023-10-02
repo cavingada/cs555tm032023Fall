@@ -150,3 +150,17 @@ def check_divorce_before_death(individuals, family):
                 if wife_errors: allErrors.append(wife_errors)
 
     return allErrors
+
+def printAllSprint1Errors(individuals, families, destination):
+    US01ERRORS = check_dates_before_current(individuals, families)
+    US02ERRORS = check_birth_before_marriage(individuals, families)
+    US03ERRORS = check_birth_before_death(individuals)
+    US04ERRORS = check_marriage_before_divorce(families)
+    US05ERRORS = check_marriage_before_death(individuals, families)
+    US06ERRORS = check_divorce_before_death(individuals, families)
+
+    # combine all 6 lists above
+    allErrors = US01ERRORS + US02ERRORS + US03ERRORS + US04ERRORS + US05ERRORS + US06ERRORS
+    with open(destination, 'a') as f:
+        for error in allErrors:
+            print(error, file=f)
