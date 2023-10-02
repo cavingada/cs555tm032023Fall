@@ -150,9 +150,3 @@ def check_divorce_before_death(individuals, family):
                 if wife_errors: allErrors.append(wife_errors)
 
     return allErrors
-print(check_dates_before_current(individuals, families))
-print(check_birth_before_marriage(individuals, families))
-print(check_birth_before_death(individuals))
-print(check_marriage_before_divorce(families))
-print(check_marriage_before_death(individuals, families))
-print(check_divorce_before_death(individuals, families))
