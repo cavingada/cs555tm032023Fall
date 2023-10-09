@@ -2,7 +2,7 @@ from gedcom.gedcom_parse import get_gedcom_df
 import pandas as pd
 from gedcom.Features.utils import get_age, compare_dates
 from datetime import datetime
-
+from dateutil.relativedelta import relativedelta
 
 import os
  
@@ -23,7 +23,7 @@ def check_birth_before_death_of_parents(individuals, family):
         # check if child was born before 9 months after father's death
         husband_death = datetime.strptime(husband_death, "%d %b %Y")
         birth_date = datetime.strptime(birth_date, "%d %b %Y")
-        nine_months = husband_death.replace(month=husband_death.month+9)
+        nine_months = husband_death + relativedelta(months=9)
         if birth_date > nine_months:
             return 1
         return 0
