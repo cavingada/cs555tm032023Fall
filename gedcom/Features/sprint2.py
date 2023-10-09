@@ -10,7 +10,74 @@ import os
 cwd = os.getcwd()
 individuals, families = get_gedcom_df(f'{cwd}/gedcom/example.ged')
 
+# US09: Birth before death of parents
+def check_birth_before_death_of_parents(individuals, family):
+    
+    def get_death(df, id):
+        val = ((df[df['ID'] == id]['DEAT']).values)[0]
+        if pd.isnull(val):
+            return ""
+        return str(val)
+    
+    def compare_husb_to_child(husband_death, birth_date):
+        # check if child was born before 9 months after father's death
+        husband_death = datetime.strptime(husband_death, "%d %b %Y")
+        birth_date = datetime.strptime(birth_date, "%d %b %Y")
+        nine_months = husband_death.replace(month=husband_death.month+9)
+        if birth_date > nine_months:
+            return 1
+        return 0
+    
+    
+    allErrors = []
+    for _, row in family.iterrows():
+        if len(row['CHIL']) < 1:
+            continue
+        else:
+            children = row['CHIL']
+            husband_id = row['HUSB']
+            wife_id = row['WIFE']
+            husband_death = get_death(individuals, husband_id)
+            wife_death = get_death(individuals, wife_id)
+            for child in children:
+                birth_date = ((individuals[individuals['ID'] == child]['BIRT']).values)[0]
+                if wife_death != "" and compare_dates(birth_date, wife_death) == 1:
+                    allErrors.append("ERROR: INDIVIDUAL: US09: " + child + " is born after the death of the mother")
+                if husband_death != "" and compare_husb_to_child(husband_death, birth_date) == 1:
+                    allErrors.append("ERROR: INDIVIDUAL: US09: " + child + " is born 9 months after the death of the father")
+    
+    return allErrors
 
+# US10: Marriage after 14
+def check_marriage_after_14(individuals, family):
+        
+        def get_age(marriage_date, birthday):
+            # convert date strings into datetime objects
+            try:
+                d1 = datetime.strptime(marriage_date, "%d %b %Y")
+                d2 = datetime.strptime(birthday, "%d %b %Y")
+            except ValueError:
+                # invalid formats
+                raise Exception("Invalid date format")
+        
+            # Compare and return the age in years
+            return ((d1 - d2).days) // 365
+        
+        allErrors = []
+        for _, row in family.iterrows():
+            husband_id = row['HUSB']
+            wife_id = row['WIFE']
+            marriage_date = row['MARR']
+            husband_age = get_age(marriage_date, ((individuals[individuals['ID'] == husband_id]['BIRT']).values)[0])
+            wife_age = get_age(marriage_date, ((individuals[individuals['ID'] == wife_id]['BIRT']).values)[0])
+            if husband_age < 14:
+                allErrors.append("ERROR: INDIVIDUAL: US10: " + husband_id + " was married before 14")
+            if wife_age < 14:
+                allErrors.append("ERROR: INDIVIDUAL: US10: " + wife_id + " was married before 14")
+        
+        return allErrors
+                
+    
 # US11: No Bigamy
 def check_bigamy(individuals, family):
     
@@ -112,15 +179,14 @@ def check_parents_too_old(individuals):
 
 def printAllSprint2Errors(individuals, families, destination):
     """US07ERRORS = check_dates_before_current(individuals, families)
-    US08ERRORS = check_birth_before_marriage(individuals, families)
-    US09ERRORS = check_birth_before_death(individuals)
-    US10ERRORS = check_marriage_before_divorce(families)
-    US11ERRORS = check_marriage_before_death(individuals, families)"""
+    US08ERRORS = check_birth_before_marriage(individuals, families)"""
+    US09ERRORS = check_birth_before_death_of_parents(individuals, families)
+    US10ERRORS = check_marriage_after_14(individuals, families)
     US11ERRORS = check_bigamy(individuals, families)
     US12ERRORS = check_parents_too_old(individuals)
 
     # combine all 6 lists above
-    allErrors = US11ERRORS + US12ERRORS
+    allErrors = US09ERRORS + US10ERRORS + US11ERRORS + US12ERRORS
     with open(destination, 'a') as f:
         for error in allErrors:
             print(error, file=f)
