@@ -95,3 +95,26 @@ Families
 ERROR: FAMILY: US05: @F1@: Married on 05 MAY 2020 after husband's (@I1@) death on 1 SEP 1953
 ERROR: FAMILY: US05: @F2@: Married on 1 JAN 2018 after husband's (@I1@) death on 1 SEP 1953
 ERROR: FAMILY: US05: @F1@: Divorced on 9 SEP 2021 after husband's (@I1@) death on 1 SEP 1953
+Individuals
++------+--------------+-----+-------------+------------+----------+------------------+
+|  ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
++------+--------------+-----+-------------+------------+----------+------------------+
+| @I1@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
+| @I2@ |  Joe /Gada/  |  M  | 12 MAR 1973 |    <NA>    |    []    |     ['@F3@']     |
+| @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
+| @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
+| @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
+| @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
+| @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
++------+--------------+-----+-------------+------------+----------+------------------+
+Families
++------+-------------+------------+------+--------------+------+--------------+----------+
+|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |   CHIL   |
++------+-------------+------------+------+--------------+------+--------------+----------+
+| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@'] |
+| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ | ['@I7@'] |
+| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  | ['@I1@'] |
++------+-------------+------------+------+--------------+------+--------------+----------+
+ERROR: FAMILY: US05: @F1@: Married on 05 MAY 2020 after husband's (@I1@) death on 1 SEP 1953
+ERROR: FAMILY: US05: @F2@: Married on 1 JAN 2018 after husband's (@I1@) death on 1 SEP 1953
+ERROR: FAMILY: US05: @F1@: Divorced on 9 SEP 2021 after husband's (@I1@) death on 1 SEP 1953

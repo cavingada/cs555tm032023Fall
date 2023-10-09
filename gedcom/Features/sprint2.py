@@ -10,6 +10,48 @@ import os
 cwd = os.getcwd()
 individuals, families = get_gedcom_df(f'{cwd}/gedcom/example.ged')
 
+#US07: Less than 150 years old
+def check_less_than_150_years_old(individuals):
+    allErrors = []
+    for _, row in individuals.iterrows(): 
+        age = get_age(row['BIRT'])
+        if age > 150:
+            allErrors.append(f"ERROR: INDIVIDUAL: US07: {row['ID']} is too old")
+    return allErrors
+
+#US08: Birth before marriage of parents
+def check_birth_before_marriage(individuals, families):
+    allErrors = []
+
+    def compare_dates_divorce(birth_date, divorce_date):
+        birth = datetime.strptime(birth_date, "%d %b %Y")
+        divorce = datetime.strptime(divorce_date, "%d %b %Y")
+        divorce_adjusted = divorce + relativedelta(months=9)
+        if birth > divorce_adjusted:
+            return 1
+        return 0
+    
+    def get_divorce_date(df, id):
+        val = ((df[df['ID'] == id]['DIV']).values)[0]
+        if pd.isnull(val):
+            return ""
+        return str(val)
+    
+    for _, row in families.iterrows():
+        children = row['CHIL']
+        marriage_date = row['MARR']
+        divorce_date = get_divorce_date(families, row['ID'])
+        for child in children:
+            birth_date = ((individuals[individuals['ID'] == child]['BIRT']).values)[0]
+            if compare_dates(marriage_date, birth_date) == 1:
+                allErrors.append("ERROR: INDIVIDUAL: US08: " + child + " is born before the marriage of the parents")
+            if divorce_date != "":
+                if compare_dates_divorce(birth_date, divorce_date) == 1:
+                    allErrors.append("ERROR: INDIVIDUAL: US08: " + child + " is born after the divorce of the parents")
+    return allErrors
+
+
+
 # US09: Birth before death of parents
 def check_birth_before_death_of_parents(individuals, family):
     
@@ -178,15 +220,15 @@ def check_parents_too_old(individuals):
     return allErrors
 
 def printAllSprint2Errors(individuals, families, destination):
-    """US07ERRORS = check_dates_before_current(individuals, families)
-    US08ERRORS = check_birth_before_marriage(individuals, families)"""
+    US07ERRORS = check_less_than_150_years_old(individuals)
+    US08ERRORS = check_birth_before_marriage(individuals, families)
     US09ERRORS = check_birth_before_death_of_parents(individuals, families)
     US10ERRORS = check_marriage_after_14(individuals, families)
     US11ERRORS = check_bigamy(individuals, families)
     US12ERRORS = check_parents_too_old(individuals)
 
     # combine all 6 lists above
-    allErrors = US09ERRORS + US10ERRORS + US11ERRORS + US12ERRORS
+    allErrors = US07ERRORS + US08ERRORS + US09ERRORS + US10ERRORS + US11ERRORS + US12ERRORS
     with open(destination, 'a') as f:
         for error in allErrors:
             print(error, file=f)
