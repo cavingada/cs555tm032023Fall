@@ -31,16 +31,16 @@ def check_birth_before_marriage(individuals, families):
             return 1
         return 0
     
-    def get_divorce_date(df, id):
-        val = ((df[df['ID'] == id]['DIV']).values)[0]
+    def get_date(df, id, type):
+        val = ((df[df['ID'] == id][type]).values)[0]
         if pd.isnull(val):
             return ""
         return str(val)
     
     for _, row in families.iterrows():
         children = row['CHIL']
-        marriage_date = row['MARR']
-        divorce_date = get_divorce_date(families, row['ID'])
+        marriage_date = get_date(families, row['ID'], 'MARR')
+        divorce_date = get_date(families, row['ID'], 'DIV')
         for child in children:
             birth_date = ((individuals[individuals['ID'] == child]['BIRT']).values)[0]
             if compare_dates(marriage_date, birth_date) == 1:
