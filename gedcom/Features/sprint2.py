@@ -3,7 +3,7 @@ import pandas as pd
 from gedcom.Features.utils import get_age, compare_dates
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
-
+from gedcom.Features.utils import get_error_msg
 import os
  
 # get current directory
@@ -194,9 +194,10 @@ def check_bigamy(individuals, family):
             listOfStartAndEnds.append((start, end))
 
         if has_single_overlap(listOfStartAndEnds):
-            allErrors.append("ERROR: INDIVIDUAL: US11: " + row['ID'] + " is a bigamist")
+            allErrors.append(get_error_msg("INDIVIDUAL", "US11", row['ID'], "is a bigamist"))
             
     return allErrors
+
 
 # US12: Parents too old
 def check_parents_too_old(individuals):
@@ -214,8 +215,7 @@ def check_parents_too_old(individuals):
             isParent = numChildren > 0
             age = get_parent_age(row)
             if isParent and age > 100:
-                error = f"ERROR: INDIVIDUAL: US12: {row['ID']} is a parent and is too old"
-                allErrors.append(error)
+                allErrors.append(get_error_msg("INDIVIDUAL", "US12", row['ID'], "is a parent and is too old"))
 
     return allErrors
 

@@ -33,3 +33,6 @@ def get_age(birthday):
 
     # Compare and return the age in years
     return ((d2 - d1).days) // 365
+
+def get_error_msg(type, userStory, id, message):
+    return("ERROR: " + type + ": " + userStory + ": " + id + " " + message)
