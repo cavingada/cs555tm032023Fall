@@ -2,72 +2,8 @@ Individuals
 +------+--------------+-----+-------------+------------+----------+------------------+
 |  ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
 +------+--------------+-----+-------------+------------+----------+------------------+
-| @I1@ | Cavin /Gada/ |  M  |  9 SEP 1880 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
-| @I2@ |  Joe /Gada/  |  M  | 12 MAR 1973 |    <NA>    |    []    |     ['@F3@']     |
-| @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
-| @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
-| @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
-| @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
-| @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
-+------+--------------+-----+-------------+------------+----------+------------------+
-Families
-+------+-------------+------------+------+--------------+------+--------------+----------+
-|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |   CHIL   |
-+------+-------------+------------+------+--------------+------+--------------+----------+
-| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@'] |
-| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ | ['@I7@'] |
-| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  | ['@I1@'] |
-+------+-------------+------------+------+--------------+------+--------------+----------+
-Individuals
-+------+--------------+-----+-------------+------------+----------+------------------+
-|  ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
-+------+--------------+-----+-------------+------------+----------+------------------+
-| @I1@ | Cavin /Gada/ |  M  |  9 SEP 1880 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
-| @I2@ |  Joe /Gada/  |  M  | 12 MAR 1973 |    <NA>    |    []    |     ['@F3@']     |
-| @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
-| @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
-| @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
-| @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
-| @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
-+------+--------------+-----+-------------+------------+----------+------------------+
-Families
-+------+-------------+------------+------+--------------+------+--------------+----------+
-|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |   CHIL   |
-+------+-------------+------------+------+--------------+------+--------------+----------+
-| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@'] |
-| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ | ['@I7@'] |
-| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  | ['@I1@'] |
-+------+-------------+------------+------+--------------+------+--------------+----------+
-Individuals
-+------+--------------+-----+-------------+------------+----------+------------------+
-|  ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
-+------+--------------+-----+-------------+------------+----------+------------------+
-| @I1@ | Cavin /Gada/ |  M  |  9 SEP 1880 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
-| @I2@ |  Joe /Gada/  |  M  | 12 MAR 1973 |    <NA>    |    []    |     ['@F3@']     |
-| @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
-| @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
-| @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
-| @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
-| @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
-+------+--------------+-----+-------------+------------+----------+------------------+
-Families
-+------+-------------+------------+------+--------------+------+--------------+----------+
-|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |   CHIL   |
-+------+-------------+------------+------+--------------+------+--------------+----------+
-| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@'] |
-| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ | ['@I7@'] |
-| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  | ['@I1@'] |
-+------+-------------+------------+------+--------------+------+--------------+----------+
-ERROR: INDIVIDUAL: US09: @I6@ is born 9 months after the death of the father
-ERROR: INDIVIDUAL: US09: @I7@ is born 9 months after the death of the father
-ERROR: INDIVIDUAL: US11: @I1@ is a bigamist
-ERROR: INDIVIDUAL: US12: @I1@ is a parent and is too old
-Individuals
-+------+--------------+-----+-------------+------------+----------+------------------+
-|  ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
-+------+--------------+-----+-------------+------------+----------+------------------+
 | @I1@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
-| @I2@ |  Joe /Gada/  |  M  | 12 MAR 1973 |    <NA>    |    []    |     ['@F3@']     |
+| @I2@ |  Joe /Gada/  |  M  | 12 MAR 1990 |    <NA>    |    []    |     ['@F3@']     |
 | @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
 | @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
 | @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
@@ -87,5 +23,6 @@ ERROR: INDIVIDUAL: US08: @I6@ is born after the divorce of the parents
 ERROR: INDIVIDUAL: US08: @I1@ is born before the marriage of the parents
 ERROR: INDIVIDUAL: US09: @I6@ is born 9 months after the death of the father
 ERROR: INDIVIDUAL: US09: @I7@ is born 9 months after the death of the father
+ERROR: INDIVIDUAL: US10: @I2@ was married before 14
 ERROR: INDIVIDUAL: US11: @I1@ is a bigamist
 ERROR: INDIVIDUAL: US12: @I1@ is a parent and is too old
