@@ -1,7 +1,7 @@
 import unittest
 import os
 from gedcom.gedcom_parse import get_gedcom_df
-from gedcom.Features.sprint1 import check_marriage_before_death, check_divorce_before_death
+from gedcom.Features.sprint1 import check_marriage_before_death
 
 # get df of families
 cwd = os.getcwd()
