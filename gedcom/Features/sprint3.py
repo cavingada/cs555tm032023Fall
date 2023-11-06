@@ -27,7 +27,7 @@ individuals, families = get_gedcom_df(f'{cwd}/gedcom/example.ged')
 # US18: Sibligns should not marry
 
 
-def printAllSprint2Errors(individuals, families, destination):
+def printAllSprint3Errors(individuals, families, destination):
     US13ERRORS = check_less_than_150_years_old(individuals)
     US14ERRORS = check_birth_before_marriage(individuals, families)
     US15ERRORS = check_birth_before_death_of_parents(individuals, families)
