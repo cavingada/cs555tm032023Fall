@@ -56,9 +56,31 @@ def check_multiple_births(individuals, families):
     return allErrors
 
 # US15: Fewer than 15 siblings
-
+def check_fewer_than_15_siblings(families):
+    allErrors = []
+    for _, row in families.iterrows():
+        children = row['CHIL']
+        length = len(children)
+        if length > 15:
+            allErrors.append(f"ERROR: FAMILY: US15: {row['ID']} has more than 15 children")
+    return allErrors
 
 # US16: Male last names
+def check_male_last_names(individuals, families):
+    allErrors = []
+    for _, row in families.iterrows():
+        children = row['CHIL']
+        length = len(children)
+        last_name = row['HUSB NAME'].split('/')[1]
+        for i in range(length):
+            child = (individuals[individuals['ID'] == children[i]])
+            if child['SEX'].values[0] != 'M':
+                continue
+            else:
+                if child['NAME'].values[0].split('/')[1] != last_name:
+                    allErrors.append(f"ERROR: FAMILY: US16: {row['ID']} has children with different last names")
+    
+    return allErrors
 
 # US17: No marriages to descendants
 
@@ -69,8 +91,8 @@ def check_multiple_births(individuals, families):
 def printAllSprint3Errors(individuals, families, destination):
     US13ERRORS = check_siblings_spacing(individuals, families)
     US14ERRORS = check_multiple_births(individuals, families)
-    US15ERRORS = []
-    US16ERRORS = []
+    US15ERRORS = check_fewer_than_15_siblings(families)
+    US16ERRORS = check_male_last_names(individuals, families)
     US17ERRORS = []
     US18ERRORS = []
 
