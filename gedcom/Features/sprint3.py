@@ -83,18 +83,39 @@ def check_male_last_names(individuals, families):
     return allErrors
 
 # US17: No marriages to descendants
+def check_marriage_to_descendants(families):
+    allErrors = []
+    for _, row in families.iterrows():
+        husband = row['HUSB']
+        wife = row['WIFE']
+        children = row['CHIL']
+        for child in children:
+            if child == husband or child == wife:
+                allErrors.append(f"ERROR: FAMILY: US17: {row['ID']} has a marriage to a descendant")
+    return allErrors
 
-
-# US18: Sibligns should not marry
-
+# US18: siblings should not marry
+def check_siblings_marry(families):
+    allErrors = []
+    # get a dictionary of all husband and wives
+    husband_wife = {}
+    for _, row in families.iterrows():
+        husband_wife[row['HUSB']] = row['WIFE']
+    
+    # check if each husband and wife (key, value) in the dictionary are both present in each CHIL column in families
+    for key, value in husband_wife.items():
+        for _, row in families.iterrows():
+            if key in row['CHIL'] and value in row['CHIL']:
+                allErrors.append(f"ERROR: FAMILY: US18: {key} and {value} are siblings and should not marry")
+    return allErrors
 
 def printAllSprint3Errors(individuals, families, destination):
     US13ERRORS = check_siblings_spacing(individuals, families)
     US14ERRORS = check_multiple_births(individuals, families)
     US15ERRORS = check_fewer_than_15_siblings(families)
     US16ERRORS = check_male_last_names(individuals, families)
-    US17ERRORS = []
-    US18ERRORS = []
+    US17ERRORS = check_marriage_to_descendants(families)
+    US18ERRORS = check_siblings_marry(families)
 
     # combine all 6 lists above
     allErrors = US13ERRORS + US14ERRORS + US15ERRORS + US16ERRORS + US17ERRORS + US18ERRORS
