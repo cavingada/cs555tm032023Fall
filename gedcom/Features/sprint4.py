@@ -94,9 +94,35 @@ def check_aunts_uncles_marry(individuals, families):
                     allErrors.append(f"ERROR: FAMILY: US20: {husband} and {wife} are aunt/uncle and nephew/niece and should not marry")
     return allErrors
 
-#US21: Correct gender for role
-
+#US21: Correct gender for role (husbands are male and wives are female)
+def correct_gender_for_role(individuals, families):
+    allErrors = []
+    for _, row in families.iterrows():
+        if not pd.isnull(row['HUSB']) and not pd.isnull(row['WIFE']):
+            husband = row['HUSB']
+            wife = row['WIFE']
+            
+            husb_gender = (individuals[individuals['ID'] == husband]['SEX']).values[0]
+            wife_gender = (individuals[individuals['ID'] == wife]['SEX']).values[0]
+            
+            if husb_gender != 'M':
+                allErrors.append(f"ERROR: US21: husband {husband} is not male in family {row['ID']}")
+            if wife_gender != 'F':
+                allErrors.append(f"ERROR: US21: wife {wife} is not female in family {row['ID']}")
+                
+    return allErrors
+    
 #US22: Unique IDs
+def unique_ids(individuals, families):
+    allErrors = []
+    ids = []
+    for _, row in individuals.iterrows():
+        ids.append(row['ID'])
+    for _, row in families.iterrows():
+        ids.append(row['ID'])
+    if len(ids) != len(set(ids)):
+        allErrors.append(f"ERROR: US22: IDs are not unique")
+    return allErrors
 
 #US23: Unique name and birth date
 
@@ -106,13 +132,13 @@ def check_aunts_uncles_marry(individuals, families):
 def printAllSprint4Errors(individuals, families, destination):
     US19ERRORS = check_first_cousins_marry(individuals, families)
     US20ERRORS = check_aunts_uncles_marry(individuals, families)
-    # US21ERRORS = check_fewer_than_15_siblings(families)
-    # US22ERRORS = check_male_last_names(individuals, families)
+    US21ERRORS = correct_gender_for_role(individuals, families)
+    US22ERRORS = unique_ids(individuals, families)
     # US23ERRORS = check_marriage_to_descendants(families)
     # US24ERRORS = check_siblings_marry(families)
 
     # combine all 6 lists above
-    allErrors = US19ERRORS + US20ERRORS
+    allErrors = US19ERRORS + US20ERRORS + US21ERRORS + US22ERRORS
     with open(destination, 'a') as f:
         for error in allErrors:
             print(error, file=f)
