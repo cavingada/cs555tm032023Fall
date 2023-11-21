@@ -125,20 +125,42 @@ def unique_ids(individuals, families):
     return allErrors
 
 #US23: Unique name and birth date
+def unique_name_and_birth_date(individuals):
+    allErrors = []
+    names_and_birth_date = []
+
+    for _, row in individuals.iterrows():
+        name = row['NAME']
+        bday = row['BIRT']
+        name_and_bday = (name, bday)
+        if name_and_bday in names_and_birth_date:
+            allErrors.append(f"ERROR: US23: Name: {name} and Birthday: {bday} are not unique")
+        else: names_and_birth_date.append(name_and_bday)
+    return allErrors
 
 #US24: Unique families by spouses
-
+def unique_families_by_spouses(families):
+    allErrors = []
+    couple_names = []
+    for _, row in families.iterrows():
+        husband_name = row['HUSB']
+        wife_name =row['WIFE']
+        couple = (husband_name, wife_name)
+        if couple in couple_names:
+            allErrors.append(f"ERROR: US24: Couple {couple} is not unique") 
+        else: couple_names.append((husband_name, wife_name))
+    return allErrors
 
 def printAllSprint4Errors(individuals, families, destination):
     US19ERRORS = check_first_cousins_marry(individuals, families)
     US20ERRORS = check_aunts_uncles_marry(individuals, families)
     US21ERRORS = correct_gender_for_role(individuals, families)
     US22ERRORS = unique_ids(individuals, families)
-    # US23ERRORS = check_marriage_to_descendants(families)
-    # US24ERRORS = check_siblings_marry(families)
+    US23ERRORS = unique_name_and_birth_date(individuals)
+    US24ERRORS = unique_families_by_spouses(families)
 
     # combine all 6 lists above
-    allErrors = US19ERRORS + US20ERRORS + US21ERRORS + US22ERRORS
+    allErrors = US19ERRORS + US20ERRORS + US21ERRORS + US22ERRORS + US23ERRORS + US24ERRORS
     with open(destination, 'a') as f:
         for error in allErrors:
             print(error, file=f)

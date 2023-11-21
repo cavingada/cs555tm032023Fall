@@ -40,3 +40,174 @@ ERROR: FAMILY: US17: @F4@ has a marriage to a descendant
 ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
 ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
 ERROR: FAMILY: US18: @I1@ and @I4@ are siblings and should not marry
+Individuals
++-------+--------------+-----+-------------+------------+----------+------------------+
+|   ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
++-------+--------------+-----+-------------+------------+----------+------------------+
+|  @I1@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
+|  @I2@ |  Joe /Gada/  |  M  | 12 MAR 1990 |    <NA>    |    []    |     ['@F3@']     |
+|  @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
+|  @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
+|  @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
+|  @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
+|  @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
+|  @I8@ |  Hana /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+|  @I9@ |  Han /Doe/   |  M  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I10@ | Hannah /Doe/ |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I11@ | Hanae /Doe/  |  F  |  6 FEB 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I12@ | Hanay /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I13@ |  Hane /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I14@ | Hanah /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
++-------+--------------+-----+-------------+------------+----------+------------------+
+Families
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |                                  CHIL                                 |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@', '@I8@', '@I9@', '@I10@', '@I11@', '@I12@', '@I13@', '@I14@'] |
+| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I7@']                               |
+| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  |                                ['@I1@']                               |
+| @F4@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I4@']                               |
+| @F5@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                            ['@I4@', '@I1@']                           |
+| @F6@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                            ['@I4@', '@I1@']                           |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+ERROR: FAMILY: US13: @I8@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I9@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I10@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I12@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I13@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I14@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US14: @F1@ has more than 5 children born on 1999-01-01 00:00:00
+ERROR: FAMILY: US16: @F1@ has children with different last names
+ERROR: FAMILY: US17: @F4@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F6@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F6@ has a marriage to a descendant
+ERROR: FAMILY: US18: @I1@ and @I4@ are siblings and should not marry
+ERROR: FAMILY: US18: @I1@ and @I4@ are siblings and should not marry
+Individuals
++-------+--------------+-----+-------------+------------+----------+------------------+
+|   ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
++-------+--------------+-----+-------------+------------+----------+------------------+
+|  @I1@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
+|  @I2@ |  Joe /Gada/  |  M  | 12 MAR 1990 |    <NA>    |    []    |     ['@F3@']     |
+|  @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
+|  @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
+|  @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
+|  @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
+|  @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
+|  @I8@ |  Hana /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+|  @I9@ |  Han /Doe/   |  M  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I10@ | Hannah /Doe/ |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I11@ | Hanae /Doe/  |  F  |  6 FEB 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I12@ | Hanay /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I13@ |  Hane /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I14@ | Hanah /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I15@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
++-------+--------------+-----+-------------+------------+----------+------------------+
+Families
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |                                  CHIL                                 |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@', '@I8@', '@I9@', '@I10@', '@I11@', '@I12@', '@I13@', '@I14@'] |
+| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I7@']                               |
+| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  |                                ['@I1@']                               |
+| @F4@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I4@']                               |
+| @F5@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                            ['@I4@', '@I1@']                           |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+ERROR: FAMILY: US13: @I8@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I9@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I10@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I12@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I13@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I14@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US14: @F1@ has more than 5 children born on 1999-01-01 00:00:00
+ERROR: FAMILY: US16: @F1@ has children with different last names
+ERROR: FAMILY: US17: @F4@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US18: @I1@ and @I4@ are siblings and should not marry
+Individuals
++-------+--------------+-----+-------------+------------+----------+------------------+
+|   ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
++-------+--------------+-----+-------------+------------+----------+------------------+
+|  @I1@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
+|  @I2@ |  Joe /Gada/  |  M  | 12 MAR 1990 |    <NA>    |    []    |     ['@F3@']     |
+|  @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
+|  @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
+|  @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
+|  @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
+|  @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
+|  @I8@ |  Hana /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+|  @I9@ |  Han /Doe/   |  M  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I10@ | Hannah /Doe/ |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I11@ | Hanae /Doe/  |  F  |  6 FEB 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I12@ | Hanay /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I13@ |  Hane /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I14@ | Hanah /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I15@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
++-------+--------------+-----+-------------+------------+----------+------------------+
+Families
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |                                  CHIL                                 |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@', '@I8@', '@I9@', '@I10@', '@I11@', '@I12@', '@I13@', '@I14@'] |
+| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I7@']                               |
+| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  |                                ['@I1@']                               |
+| @F4@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I4@']                               |
+| @F5@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                            ['@I4@', '@I1@']                           |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+ERROR: FAMILY: US13: @I8@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I9@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I10@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I12@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I13@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I14@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US14: @F1@ has more than 5 children born on 1999-01-01 00:00:00
+ERROR: FAMILY: US16: @F1@ has children with different last names
+ERROR: FAMILY: US17: @F4@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US18: @I1@ and @I4@ are siblings and should not marry
+Individuals
++-------+--------------+-----+-------------+------------+----------+------------------+
+|   ID  |     NAME     | SEX |     BIRT    |    DEAT    |   FAMC   |       FAMS       |
++-------+--------------+-----+-------------+------------+----------+------------------+
+|  @I1@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
+|  @I2@ |  Joe /Gada/  |  M  | 12 MAR 1990 |    <NA>    |    []    |     ['@F3@']     |
+|  @I3@ | Jane /Gada/  |  F  |  4 MAY 1975 |    <NA>    |    []    |     ['@F3@']     |
+|  @I4@ | Rachel /Dow/ |  F  |  4 MAR 1999 | 8 MAY 2020 |    []    |     ['@F2@']     |
+|  @I5@ | Hanna /Doe/  |  F  |  4 FEB 1999 |    <NA>    |    []    |     ['@F1@']     |
+|  @I6@ |  Rex /Gada/  |  M  |  1 JAN 2023 |    <NA>    | ['@F1@'] |        []        |
+|  @I7@ |  Joe /Gada/  |  M  |  9 FEB 2019 |    <NA>    | ['@F2@'] |        []        |
+|  @I8@ |  Hana /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+|  @I9@ |  Han /Doe/   |  M  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I10@ | Hannah /Doe/ |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I11@ | Hanae /Doe/  |  F  |  6 FEB 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I12@ | Hanay /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I13@ |  Hane /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I14@ | Hanah /Doe/  |  F  |  1 JAN 1999 |    <NA>    | ['@F1@'] |        []        |
+| @I15@ | Cavin /Gada/ |  M  |  9 SEP 1872 | 1 SEP 1953 | ['@F3@'] | ['@F1@', '@F2@'] |
++-------+--------------+-----+-------------+------------+----------+------------------+
+Families
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+|  ID  |     MARR    |    DIV     | HUSB |  HUSB NAME   | WIFE |  WIFE NAME   |                                  CHIL                                 |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+| @F1@ | 05 MAY 2020 | 9 SEP 2021 | @I1@ | Cavin /Gada/ | @I5@ | Hanna /Doe/  | ['@I6@', '@I8@', '@I9@', '@I10@', '@I11@', '@I12@', '@I13@', '@I14@'] |
+| @F2@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I7@']                               |
+| @F3@ |  1 JAN 1995 |    <NA>    | @I2@ |  Joe /Gada/  | @I3@ | Jane /Gada/  |                                ['@I1@']                               |
+| @F4@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                                ['@I4@']                               |
+| @F5@ |  1 JAN 2018 |    <NA>    | @I1@ | Cavin /Gada/ | @I4@ | Rachel /Dow/ |                            ['@I4@', '@I1@']                           |
++------+-------------+------------+------+--------------+------+--------------+-----------------------------------------------------------------------+
+ERROR: FAMILY: US13: @I8@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I9@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I10@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I12@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I13@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US13: @I14@ and @I11@ are born less than 8 months of each other and are not twins
+ERROR: FAMILY: US14: @F1@ has more than 5 children born on 1999-01-01 00:00:00
+ERROR: FAMILY: US16: @F1@ has children with different last names
+ERROR: FAMILY: US17: @F4@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US17: @F5@ has a marriage to a descendant
+ERROR: FAMILY: US18: @I1@ and @I4@ are siblings and should not marry
