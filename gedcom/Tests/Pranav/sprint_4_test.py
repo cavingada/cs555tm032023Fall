@@ -22,7 +22,7 @@ class TestUS(unittest.TestCase):
 
     def test_no_errors(self):
         cwd = os.getcwd()
-        individuals, families = get_gedcom_df(f'{cwd}/gedcom/example.ged')
+        individuals, families = get_gedcom_df(f'{cwd}/gedcom/Tests/Pranav/sprint4_noerrors.ged')
         errors = check_first_cousins_marry(individuals, families)
         errors += check_aunts_uncles_marry(individuals, families)
         self.assertEqual(len(errors), 0)
